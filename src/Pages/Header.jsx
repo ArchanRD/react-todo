@@ -20,9 +20,9 @@ const Home = () => {
 
   function handleClick(e) {
     if (e.target.checked) {
-      document.getElementById("todoItem").classList.add("line-through");
+      e.target.parentNode.parentNode.classList.add("line-through")
     } else {
-      document.getElementById("todoItem").classList.remove("line-through");
+      e.target.parentNode.parentNode.classList.remove("line-through")
     }
   }
 
@@ -76,16 +76,10 @@ const Home = () => {
         {todos.map((item, i) => {
           return (
             <div key={i} className="flex justify-between">
-              <li className="font-poppins text-xl list-disc ml-5" id="todoItem">
+              <li className="font-poppins text-xl list-disc ml-5 todoItem" >
                 {item}
               </li>
               <div className="flex items-center">
-                <input
-                  type={"checkbox"}
-                  value={"incomplete"}
-                  className="w-6 h-6 cursor-pointer mr-4"
-                  onClick={handleClick}
-                />
                 <span
                   onClick={handleDelete}
                   className="material-symbols-outlined text-red-500 cursor-pointer text-3xl hover:text-red-400"
